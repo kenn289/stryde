@@ -23,19 +23,43 @@ const Contact = () => {
     service: "",
     message: "",
   });
-  const [nextUrl, setNextUrl] = useState("");
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("sent") === "1") {
+    // no-op: using AJAX submit, no redirects
+  }, [toast]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("service", formData.service);
+      payload.append("message", formData.message);
+      payload.append("_subject", `New inquiry from ${formData.name || "Website"}`);
+      payload.append("_template", "table");
+      payload.append("_captcha", "false");
+
+      const res = await fetch("https://formsubmit.co/ajax/realstryde@gmail.com", {
+        method: "POST",
+        body: payload,
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) throw new Error("Failed to send");
+
       toast({
         title: "Message Sent!",
         description: "Thank you for contacting us. We'll get back to you soon.",
       });
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    } catch (err) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email realstryde@gmail.com",
+      });
     }
-    // Ensure absolute URL for FormSubmit _next to prevent 404
-    setNextUrl(`${window.location.origin}/contact?sent=1`);
-  }, [toast]);
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -76,19 +100,8 @@ const Contact = () => {
                   Send Us a Message
                 </h2>
 
-                <form 
-                  action="https://formsubmit.co/realstryde@gmail.com" 
-                  method="POST"
-                  encType="application/x-www-form-urlencoded"
-                  accept-charset="UTF-8"
-                  className="space-y-6"
-                >
-                  {/* Hidden fields for FormSubmit */}
-                  <input type="hidden" name="_subject" value={`New inquiry from ${formData.name || "Website"}`} />
-                  <input type="hidden" name="_template" value="table" />
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_next" value={nextUrl} />
-                  <input type="hidden" name="_url" value={typeof window !== 'undefined' ? window.location.href : ''} />
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Hidden anti-bot field */}
                   <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -175,7 +188,6 @@ const Contact = () => {
 
                   <Button
                     type="submit"
-                    formMethod="post"
                     size="lg"
                     className="w-full bg-primary hover:bg-primary-dark text-primary-foreground font-semibold shadow-glow transition-all duration-300 hover:scale-105 group"
                   >
