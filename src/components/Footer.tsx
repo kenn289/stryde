@@ -73,13 +73,13 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center space-x-2 text-muted-foreground">
                 <Mail size={18} className="text-primary" />
-                <a href="mailto:contact@stryde.in" className="hover:text-primary transition-colors">
-                  contact@stryde.in
+                <a href="mailto:realstryde@gmail.com" className="hover:text-primary transition-colors">
+                  realstryde@gmail.com
                 </a>
               </li>
               <li className="flex items-center space-x-2 text-muted-foreground">
                 <Phone size={18} className="text-primary" />
-                <span>+91-XXXX-XXXXXX</span>
+                <span>+91 7619254792</span>
               </li>
             </ul>
           </div>
