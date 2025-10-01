@@ -23,6 +23,7 @@ const Contact = () => {
     service: "",
     message: "",
   });
+  const [nextUrl, setNextUrl] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -32,6 +33,8 @@ const Contact = () => {
         description: "Thank you for contacting us. We'll get back to you soon.",
       });
     }
+    // Ensure absolute URL for FormSubmit _next to prevent 404
+    setNextUrl(`${window.location.origin}/contact?sent=1`);
   }, [toast]);
 
   const handleChange = (
@@ -84,7 +87,8 @@ const Contact = () => {
                   <input type="hidden" name="_subject" value={`New inquiry from ${formData.name || "Website"}`} />
                   <input type="hidden" name="_template" value="table" />
                   <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_next" defaultValue={typeof window !== 'undefined' ? `${window.location.origin}/contact?sent=1` : ''} />
+                  <input type="hidden" name="_next" value={nextUrl} />
+                  <input type="hidden" name="_url" value={typeof window !== 'undefined' ? window.location.href : ''} />
                   <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
