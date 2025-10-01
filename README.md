@@ -1,73 +1,99 @@
-# Welcome to your Lovable project
+# Stryde Website
 
-## Project info
+Welcome to the **Stryde** website repository. This website showcases our practical solutions designed to help businesses grow through automation, web development, and data services.  
 
-**URL**: https://lovable.dev/projects/eddfce20-3ba4-44a8-a2c2-09a09d8951aa
+---
 
-## How can I edit this code?
+## Homepage
 
-There are several ways of editing your application.
+### Hero Section
+- **Headline:** Practical Solutions to Grow Your Business  
+- **Subheading:** We provide automation, website, and data services that help businesses save time, stay organized, and make informed decisions.  
+- **CTA Button:** "Get a Quote"  
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/eddfce20-3ba4-44a8-a2c2-09a09d8951aa) and start prompting.
+## Services Overview
+- **Headline:** Our Services  
+- **Subheading:** From websites to data management, we deliver practical solutions for businesses of all sizes.  
 
-Changes made via Lovable will be committed automatically to this repo.
+**Service Cards:**
+1. **Automation & Tools** – Automate routine tasks and improve productivity.  
+2. **Website Development** – Build responsive, professional websites and online stores.  
+3. **Data Services** – Collect, clean, and analyze data to make better business decisions.  
 
-**Use your preferred IDE**
+- **CTA Button:** "Learn More" (links to detailed service pages)  
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Services Pages
 
-Follow these steps:
+### Automation & Tools
+- **Headline:** Smart Business Tools to Simplify Your Work  
+- **Subheading:** Automate routine tasks, enhance productivity, and make data-driven decisions.  
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+**Services Offered:**
+- Chatbots: Customer support, FAQs, and lead follow-up  
+- Business Automation: Streamline repetitive tasks  
+- Data Insights: Analyze trends and generate reports to guide decisions  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- **CTA Button:** "Get a Quote"  
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Website Development
+- **Headline:** Websites Designed to Grow Your Business  
+- **Subheading:** Multi-page websites, landing pages, and online stores built to attract and engage customers.  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+**Services Offered:**
+- Landing Pages & Multi-Page Sites: Clean, responsive designs  
+- E-commerce Setup: Quick and functional online stores  
+- Tech Stack Expertise: WordPress, React, HTML/CSS  
 
-**Edit a file directly in GitHub**
+- **CTA Button:** "Schedule a Consultation"  
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Data Services
+- **Headline:** Organize, Analyze, and Make the Most of Your Data  
+- **Subheading:** Collect, clean, and analyze data to help your business operate efficiently and make informed decisions.  
 
-**Use GitHub Codespaces**
+**Services Offered:**
+- Data Acquisition: Collect datasets from online sources or APIs  
+- Data Cleaning & Structuring: Turn raw data into actionable information  
+- Analytics & Reporting: Dashboards and reports to understand trends and performance  
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **CTA Button:** "Request a Proposal"  
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## About / Why Choose Us
+- **Headline:** Why Stryde?  
+- **Subheading:** Practical, reliable services designed to help your business run smoothly.  
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Highlights:**
+- Fast and professional delivery  
+- Quality control at every step  
+- Solutions tailored to your business needs and budget  
 
-## How can I deploy this project?
+- **CTA Button:** "Contact Us"  
 
-Simply open [Lovable](https://lovable.dev/projects/eddfce20-3ba4-44a8-a2c2-09a09d8951aa) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## Contact Page
+- **Headline:** Get Started with Your Project  
+- **Subheading:** Tell us what you need, and we’ll provide a solution that fits your business.  
 
-Yes, you can!
+**Form Fields:**
+- Name  
+- Email  
+- Phone (optional)  
+- Message  
+- Dropdown: Service of Interest (Automation, Website, Data)  
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**CTA Button:** "Send Message"  
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+## Tech Stack
+- Frontend: React / HTML / CSS  
+- Backend: Node.js / Express (if applicable)  
+- Hosting: Vercel (recommended)  
+
+
