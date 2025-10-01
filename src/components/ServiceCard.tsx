@@ -11,11 +11,11 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ icon: Icon, title, description, link }: ServiceCardProps) => {
   return (
-    <div className="group relative bg-card border border-border rounded-2xl p-8 transition-all duration-500 hover:shadow-xl hover:scale-105 hover:border-primary/50 animate-fade-in">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    <div className="group relative bg-card border border-border rounded-2xl p-8 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 animate-fade-in overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 gradient-hero opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
       
       <div className="relative">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
           <Icon size={32} />
         </div>
         

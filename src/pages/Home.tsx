@@ -41,8 +41,51 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00em0wIDI0YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00ek0xMiAxNmMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHptMCAyNGMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-40" />
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 gradient-hero opacity-10" />
+          <div className="absolute -inset-40 mesh-overlay" />
+          <div className="absolute inset-0 bg-pattern-dots opacity-20" />
+          {/* Geometric shapes */}
+          <svg className="absolute top-20 left-10 w-64 h-64 opacity-30 animate-spin-slow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gradA" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="hsl(195 60% 65% / 0.6)" />
+                <stop offset="100%" stopColor="hsl(48 100% 60% / 0.6)" />
+              </linearGradient>
+            </defs>
+            <polygon points="100,10 190,190 10,190" fill="url(#gradA)" />
+          </svg>
+          <svg className="absolute bottom-10 -right-10 w-72 h-72 opacity-25 animate-spin-slow" style={{ animationDelay: '1.5s' }} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="hsl(195 60% 65% / 0.4)" strokeWidth="2" />
+            <circle cx="100" cy="100" r="60" fill="none" stroke="hsl(48 100% 60% / 0.4)" strokeWidth="2" />
+            <circle cx="100" cy="100" r="30" fill="none" stroke="hsl(195 60% 65% / 0.4)" strokeWidth="2" />
+          </svg>
+          <svg className="absolute top-1/3 right-1/3 w-40 h-40 opacity-20 animate-float" style={{ animationDelay: '3s' }} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="160" height="160" rx="24" ry="24" fill="none" stroke="hsl(195 60% 65% / 0.35)" strokeWidth="2" />
+          </svg>
+          {/* Additional particles */}
+          {Array.from({ length: 18 }).map((_, i) => (
+            <span
+              key={i}
+              className={`absolute w-2 h-2 rounded-full shadow-glow ${
+                i % 2 === 0 ? "bg-primary/80" : "bg-secondary/80"
+              }`}
+              style={{
+                left: `${(i * 37) % 100}%`,
+                top: `${(i * 53) % 100}%`,
+                animation: `float ${6 + (i % 5)}s ease-in-out infinite`,
+                animationDelay: `${i * 0.2}s`,
+                opacity: 0.9,
+              }}
+            />
+          ))}
+          {/* Orbiting dots around center */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="relative w-40 h-40">
+              <span className="absolute left-1/2 top-1/2 block w-2 h-2 rounded-full bg-primary shadow-glow animate-orbit" />
+              <span className="absolute left-1/2 top-1/2 block w-2 h-2 rounded-full bg-secondary shadow-glow animate-orbit" style={{ animationDuration: '16s' }} />
+            </div>
+          </div>
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -89,7 +132,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 bg-muted/30">
+      <section id="services" className="py-24 bg-muted/30 scroll-mt-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Poppins']">
@@ -114,7 +157,7 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="about" className="py-24">
+      <section id="about" className="py-24 scroll-mt-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
