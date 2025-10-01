@@ -24,25 +24,41 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
+    try {
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("service", formData.service);
+      payload.append("message", formData.message);
+      payload.append("_subject", `New inquiry from ${formData.name} (${formData.service || "general"})`);
+      payload.append("_honeypot", "");
+      payload.append("_template", "table");
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    });
+      const res = await fetch("https://formsubmit.co/ajax/realstryde@gmail.com", {
+        method: "POST",
+        body: payload,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email realstryde@gmail.com",
+      });
+    }
   };
 
   const handleChange = (
@@ -85,6 +101,8 @@ const Contact = () => {
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Hidden anti-bot field for FormSubmit */}
+                  <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Name *

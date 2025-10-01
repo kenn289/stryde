@@ -23,19 +23,24 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/#services" },
     { name: "Automation", path: "/automation" },
     { name: "Websites", path: "/websites" },
     { name: "Data Services", path: "/data-services" },
     { name: "About", path: "/#about" },
   ];
 
+  const isActive = (path: string) => {
+    if (path.includes("#")) {
+      const [base, hash] = path.split("#");
+      return location.pathname === base && window.location.hash === `#${hash}`;
+    }
+    return location.pathname === path;
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md"
-          : "bg-transparent"
+        scrolled ? "glass-effect shadow-md" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -44,9 +49,9 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Stryde Logo"
-              className="h-12 w-12 transition-transform duration-300 group-hover:scale-110"
+              className="h-14 w-14 transition-transform duration-300 group-hover:scale-110"
             />
-            <span className="text-2xl font-bold text-foreground font-['Poppins']">
+            <span className="text-3xl font-bold text-foreground font-['Poppins']">
               STRYDE
             </span>
           </Link>
@@ -57,10 +62,18 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-foreground/80 hover:text-primary font-medium transition-colors duration-200 relative group"
+                className={`font-medium transition-colors duration-200 relative group focus:outline-none focus-visible:outline-none focus-visible:ring-0 ${
+                  isActive(link.path)
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-primary"
+                }`}
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                    isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
               </Link>
             ))}
             <Link to="/contact">
@@ -86,12 +99,16 @@ const Navbar = () => {
             isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="py-4 space-y-4 bg-background/95 backdrop-blur-md rounded-lg mb-4">
+          <div className="py-4 space-y-4 glass-effect rounded-lg mb-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="block px-4 py-2 text-foreground/80 hover:text-primary hover:bg-muted rounded-md transition-all duration-200"
+                className={`block px-4 py-2 rounded-md transition-all duration-200 focus:outline-none focus-visible:outline-none focus-visible:ring-0 ${
+                  isActive(link.path)
+                    ? "text-primary bg-muted"
+                    : "text-foreground/80 hover:text-primary hover:bg-muted"
+                }`}
               >
                 {link.name}
               </Link>

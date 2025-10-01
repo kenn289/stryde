@@ -4,8 +4,11 @@ import logo from "@/assets/stryde-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-muted border-t border-border">
-      <div className="container mx-auto px-4 lg:px-8 py-12">
+    <footer className="relative bg-muted border-t border-border overflow-hidden">
+      <div className="absolute -inset-x-10 -top-20 h-40 opacity-30 blur-3xl pointer-events-none">
+        <div className="w-full h-full gradient-hero" />
+      </div>
+      <div className="container mx-auto px-4 lg:px-8 py-12 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
@@ -82,14 +85,12 @@ const Footer = () => {
                 <span>+91 7349065512</span>
               </li>
             </ul>
+
+            {/* Social links removed as requested */}
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Stryde. All rights reserved.
-          </p>
-        </div>
+        {/* Copyright removed as requested */}
       </div>
     </footer>
   );

@@ -8,8 +8,8 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 5%;
+    --background: 210 25% 98%;
+    --foreground: 222 47% 10%;
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 5%;
@@ -17,18 +17,17 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 5%;
 
-    /* Stryde Blue - Primary brand color */
-    --primary: 195 60% 65%;
+    /* Refined brand colors */
+    --primary: 200 85% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-dark: 195 60% 45%;
+    --primary-dark: 200 85% 42%;
     
-    /* Stryde Yellow - Accent color */
-    --secondary: 48 100% 60%;
-    --secondary-foreground: 0 0% 5%;
-    --secondary-dark: 48 100% 50%;
+    --secondary: 45 96% 56%;
+    --secondary-foreground: 222 47% 10%;
+    --secondary-dark: 45 96% 48%;
 
     --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 22% 45%;
 
     --accent: 48 100% 60%;
     --accent-foreground: 0 0% 5%;
@@ -36,17 +35,27 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 195 60% 65%;
+    --border: 214 32% 90%;
+    --input: 214 32% 90%;
+    --ring: 200 85% 50%;
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(195 60% 65%) 0%, hsl(195 60% 45%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(48 100% 60%) 0%, hsl(48 100% 50%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(195 60% 65%) 0%, hsl(195 70% 55%) 50%, hsl(48 100% 60%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(200 85% 55%) 0%, hsl(200 85% 45%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(45 96% 56%) 0%, hsl(45 96% 48%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(200 85% 55%) 0%, hsl(200 85% 50%) 45%, hsl(45 96% 56%) 100%);
     
+    /* Extended Gradients */
+    --gradient-subtle: linear-gradient(145deg, hsl(210 25% 99%) 0%, hsl(210 25% 96%) 100%);
+    --gradient-mesh: radial-gradient(at 50% 0%, hsl(200 85% 55% / 0.15) 0%, hsl(45 96% 56% / 0.05) 50%, transparent 100%);
+    --gradient-glow: conic-gradient(from 180deg at 50% 50%, hsl(200 85% 55% / 0.3) 0deg, hsl(45 96% 56% / 0.2) 180deg, transparent 360deg);
+    
+    /* Patterns */
+    --pattern-dots: radial-gradient(circle at center, hsl(var(--primary) / 0.15) 2px, transparent 2px) 0 0/20px 20px;
+    --pattern-grid: linear-gradient(to right, hsl(var(--primary) / 0.1) 1px, transparent 1px),
+                   linear-gradient(to bottom, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
@@ -87,6 +96,10 @@ All colors MUST be HSL.
     --ring: 195 60% 65%;
 
     --shadow-glow: 0 0 30px hsl(195 60% 65% / 0.2);
+
+    --pattern-dots: radial-gradient(circle at center, hsl(var(--primary) / 0.2) 2px, transparent 2px) 0 0/20px 20px;
+    --pattern-grid: linear-gradient(to right, hsl(var(--primary) / 0.2) 1px, transparent 1px),
+                   linear-gradient(to bottom, hsl(var(--primary) / 0.2) 1px, transparent 1px);
   }
 }
 
@@ -101,6 +114,22 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Remove default focus rings for links and buttons, rely on custom styles */
+  a:focus, button:focus {outline: none;}
+  a:focus-visible, button:focus-visible {outline: none; box-shadow: none;}
+
+  /* Typography defaults */
+  h1 {@apply font-['Poppins'] tracking-tight;}
+  h2 {@apply font-['Poppins'] tracking-tight;}
+  h3 {@apply font-['Poppins'] tracking-tight;}
+  h4 {@apply font-['Poppins'] tracking-tight;}
+  h5 {@apply font-['Poppins'] tracking-tight;}
+  h6 {@apply font-['Poppins'] tracking-tight;}
+
+  ::selection {
+    background: hsl(var(--primary) / 0.15);
   }
 }
 
@@ -130,5 +159,60 @@ All colors MUST be HSL.
     display: inline-block;
     line-height: 1.2;
     padding-bottom: 0.1em;
+  }
+
+  .bg-pattern-dots {
+    background-image: var(--pattern-dots);
+  }
+
+  .bg-pattern-grid {
+    background-image: var(--pattern-grid);
+    background-size: 20px 20px;
+  }
+
+  .bg-mesh-gradient {
+    background-image: var(--gradient-mesh);
+  }
+
+  .animate-glow {
+    animation: glow 8s linear infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .glass-effect {
+    @apply bg-background/80 backdrop-blur-md border border-border/50;
+  }
+
+  .hover-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-1;
+  }
+
+  .mesh-overlay {
+    background-image: var(--gradient-mesh);
+    filter: blur(30px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
