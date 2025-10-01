@@ -75,7 +75,9 @@ const Contact = () => {
 
                 <form 
                   action="https://formsubmit.co/realstryde@gmail.com" 
-                  method="POST" 
+                  method="POST"
+                  encType="application/x-www-form-urlencoded"
+                  accept-charset="UTF-8"
                   className="space-y-6"
                 >
                   {/* Hidden fields for FormSubmit */}
@@ -169,6 +171,7 @@ const Contact = () => {
 
                   <Button
                     type="submit"
+                    formMethod="post"
                     size="lg"
                     className="w-full bg-primary hover:bg-primary-dark text-primary-foreground font-semibold shadow-glow transition-all duration-300 hover:scale-105 group"
                   >
